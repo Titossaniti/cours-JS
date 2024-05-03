@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz en JS</title>
+</head>
+<body>
+    <script>
+        const questions = [
+            {
+                question: "Quelle est la capitale de la France ?",
+                choices: "A: Paris, B: Londres, C: Rome",
+                answer: "A"
+            },
+            {
+                question: "Quel est le résultat de 3 + 4 ?",
+                choices: "A: 7, B: 12, C: 9",
+                answer: "A"
+            },
+            {
+                question: "Quel est le plus grand océan du monde ?",
+                choices: "A: Atlantique, B: Indien, C: Pacifique",
+                answer: "C"
+            }
+        ];
+
+        let score = 0;
+
+        for (let i = 0; i < questions.length; i++) {
+            let userResponse = prompt(questions[i].question + '\n' + questions[i].choices);
+            if (userResponse.toUpperCase() === questions[i].answer) {
+                console.log("Correct !");
+                score++;
+            } else {
+                console.log("Faux !");
+            }
+        }
+        console.log("Vous avez obtenu un score de " + score + " points !");
+
+
+
+    </script>
+</body>
+</html>

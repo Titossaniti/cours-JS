@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boucles en JavaScript</title>
+</head>
+<body>
+<h1>Les boucles en JavaScript</h1>
+
+
+    <script>
+        const notes = [3, 5, 4, 5, 2, 5, 4, 1, 4, 5];
+        let total=0;
+
+        for (let i=0; i < notes.length; i++) {
+            total = notes[i]+total;
+        }
+        total = total/notes.length;
+        console.log(total)
+
+        let result=0;
+
+        for (let i=0; i < notes.length; i++){
+            if (notes[i]===5){
+                result++
+            }
+        }
+        console.log(result)
+
+
+    </script>
+</body>
+</html>

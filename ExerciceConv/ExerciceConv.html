@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversions de Type en JavaScript</title>
+</head>
+<body>
+    <script>
+        const pseudo = "Bob" + 51;
+        console.log(pseudo);
+
+        const inputString = "123";
+        const convertedNumber = Number(inputString);
+        console.log(inputString, convertedNumber);
+
+        const isActive = true;
+        const stringVersion = String(isActive);
+        console.log(isActive, stringVersion);
+
+        let number = 0; // Type Number
+        let text = "0"; // Type String
+
+        // Coercition de type implicite lors de l'utilisation de l'opérateur +
+        let result = number + text;
+        console.log(result); // Affiche "55" au lieu de 10
+
+        if (number == text) {
+            console.log("0 == '0' est vrai avec ==");
+        } else {
+            console.log("0 == '0' est faux avec ==");
+        }
+
+        if (number === text) {
+            console.log("0 === '0' est vrai avec ===");
+        } else {
+            console.log("0 === '0' est faux avec ==="); // Ce message sera affiché
+        }
+
+        function sayHello(name) {
+            console.log(`Hello, ${name}!`);
+        }
+        sayHello("Alice");
+    </script>
+</body>
+</html>
