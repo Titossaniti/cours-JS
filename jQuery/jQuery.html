@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Bonbons Gourmands - Votre boutique de bonbons</title>
+    <title>jQuery</title>
     <style>
         .product {
             margin: 20px;
@@ -66,41 +66,37 @@
         <button>Ajouter au panier</button>
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+    $(document).ready(function() {
 
-    document.querySelectorAll('.product-info h2').forEach(function (h2) {
-        h2.addEventListener('click', function () {
-            const desc = this.nextElementSibling;
-            if (this.textContent === "Bonbons Arc-en-ciel") {
-                desc.textContent = "Savourez le goût fruité de nos bonbons arc-en-ciel, maintenant avec 20% en plus dans chaque paquet ! Offre limitée.";
+        $('.product-info > h2').click(function(){
+            const productName = $(this).text();
+            const description = $(this).next('p');
+            if (productName === "Bonbons Arc-en-ciel"){
+                description.text("NEW TEXT 1");
             }
-            if (this.textContent === "Ours Gélifiés") {
-                desc.textContent = "Découvrez nos ours gélifiés en édition limitée aux saveurs exotiques. Parfait pour une aventure gustative unique.";
+            if (productName === "Ours Gélifiés"){
+                description.text("NEW TEXT 2");
             }
-            if (this.textContent === "Chocolats Fins") {
-                desc.textContent = "Nos chocolats fins, désormais disponibles dans un assortiment spécial dégustation. Découvrez les saveurs du monde."
+            if (productName === "Chocolats Fins"){
+                description.text("NEW TEXT 3");
             }
         })
-    })
 
-    document.querySelectorAll('button').forEach(function (addToCart) {
-        addToCart.addEventListener('click', function () {
-            alert(`Vous avez bien ajouté ${this.previousElementSibling.previousElementSibling.innerText} à votre panier !`)
+        $('button').click(function (){
+            const productName = $(this).siblings('h2').text();
+            alert(`Le produit ${productName} a bien été ajouté au panier !`)
         })
+
+        $('.product').click(function (event){
+            if ($(event.target).is('BUTTON')){
+            } else {
+                alert(`Voici les ` + $(this).find('h2').text() +'\n'+ $(this).find('p').text() );
+            }
+        })
+
     })
-
-    document.querySelectorAll('.product').forEach(function (desc) {
-        desc.addEventListener('click', function(event) {
-            if (event.target.tagName !== 'BUTTON') {
-
-            alert(`Voici les ${this.querySelector('h2').innerText} !\n${this.querySelector('p').innerText} `);
-        }
-            })
-    })
-
-});
 </script>
 </body>
 </html>
