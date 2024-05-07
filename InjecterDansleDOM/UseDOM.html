@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bonbons Gourmands - Votre boutique de bonbons</title>
+    <style>
+        .product {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #f0a;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .product img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .product-info {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .highlight {
+            background-color: #ffff99;
+        }
+        button {
+            background-color: #f0a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #f3b;
+        }
+    </style>
+</head>
+<body>
+<h1>Bienvenue chez Bonbons Gourmands</h1>
+<p>Découvrez notre sélection de bonbons délicieux et commandez en ligne !</p>
+
+<div class="product" id="product1">
+    <img src="https://www.accessinfos.fr/uploads/img/article_photo//644949375175b_bonbons.png" alt="Bonbon coloré">
+    <div class="product-info">
+        <h2>Bonbons Arc-en-ciel</h2>
+        <p>Savourez le goût fruité de nos bonbons arc-en-ciel, parfaits pour tous les âges.</p>
+        <button>Ajouter au panier</button>
+    </div>
+</div>
+
+<div class="product" id="product2">
+    <img src="https://cdn.store-factory.com/www.confiserie-foraine.com/content/product_10719928b.jpg?v=1551976975" alt="Bonbon gélifié">
+    <div class="product-info">
+        <h2>Ours Gélifiés</h2>
+        <p>Les classiques ours gélifiés, un régal pour les petits comme pour les grands.</p>
+        <button>Ajouter au panier</button>
+    </div>
+</div>
+
+<div class="product" id="product3">
+    <img src="https://img.freepik.com/photos-premium/fond-bonbons-au-chocolat_495832-144.jpg" alt="Chocolat">
+    <div class="product-info">
+        <h2>Chocolats Fins</h2>
+        <p>Découvrez le fondant de nos chocolats, fabriqués à partir des meilleurs cacaos.</p>
+        <button>Ajouter au panier</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.querySelectorAll('.product-info h2').forEach(function (h2) {
+        h2.addEventListener('click', function () {
+            const desc = this.nextElementSibling;
+            if (this.textContent === "Bonbons Arc-en-ciel") {
+                desc.textContent = "Savourez le goût fruité de nos bonbons arc-en-ciel, maintenant avec 20% en plus dans chaque paquet ! Offre limitée.";
+            }
+            if (this.textContent === "Ours Gélifiés") {
+                desc.textContent = "Découvrez nos ours gélifiés en édition limitée aux saveurs exotiques. Parfait pour une aventure gustative unique.";
+            }
+            if (this.textContent === "Chocolats Fins") {
+                desc.textContent = "Nos chocolats fins, désormais disponibles dans un assortiment spécial dégustation. Découvrez les saveurs du monde."
+            }
+        })
+    })
+
+    document.querySelectorAll('button').forEach(function (addToCart) {
+        addToCart.addEventListener('click', function () {
+            alert(`Vous avez bien ajouté ${this.previousElementSibling.previousElementSibling.innerText} à votre panier !`)
+        })
+    })
+
+    document.querySelectorAll('.product').forEach(function (desc) {
+        desc.addEventListener('click', function () {
+            if (event.target.tagName !== 'BUTTON') {
+
+            alert(`Voici les ${this.querySelector('h2').innerText} ! ${this.querySelector('p').innerText} `);
+        }
+            })
+    })
+
+
+});
+</script>
+</body>
+</html>

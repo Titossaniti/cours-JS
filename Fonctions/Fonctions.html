@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Les fonctions</title>
+</head>
+<body>
+    <script>
+      const transactions = [
+        { id: 1, label: 'Achat café', amount: 3.50 },
+        { id: 2, label: 'Paiement facture', amount: 120.00 },
+        { id: 3, label: 'Remboursement ami', amount: 15.00 },
+        { id: 4, label: 'Abonnement musique', amount: 9.99 },
+        { id: 5, label: 'Achat livre', amount: 25.00 },
+        { id: 6, label: 'Virement reçu', amount: 250.00 },
+        { id: 7, label: 'Achat billet concert', amount: 59.90 },
+        { id: 8, label: 'Don association', amount: 50.00 },
+        { id: 9, label: 'Achat sneakers', amount: 130.00 },
+        { id: 10, label: 'Paiement loyer', amount: 850.00 }
+      ];
+
+      const threshold = 150
+      const priceAbove = transactions
+              .filter(transactions => transactions.amount > 150)
+              .map(transactions => transactions.amount)
+              .reduce((acc, transactions) => acc + transactions, 0);
+      console.log(priceAbove)
+    </script>
+</body>
+</html>

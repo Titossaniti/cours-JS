@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Les objets en JS</title>
+</head>
+<body>
+    <script>
+        const person = {
+            name: 'John',
+            age: 30,
+        };
+
+        for (const key in person) {
+            console.log(`${key}: ${person[key]}`);
+        }
+
+        Object.entries(person).map(([key, value]) => {
+            console.log(`${key}: ${value}`);
+        });
+
+
+        const library = [
+            {
+                title: "Le Petit Prince",
+                author: "Antoine de Saint-Exupéry",
+                publicationYear: 1943,
+                isBorrowed: false
+            },
+            {
+                title: "1984",
+                author: "George Orwell",
+                publicationYear: 1949,
+                isBorrowed: true
+            },
+            {
+                title: "Le Seigneur des Anneaux",
+                author: "J.R.R. Tolkien",
+                publicationYear: 1954,
+                isBorrowed: false
+            },
+            {
+                title: "Harry Potter à l'école des sorciers",
+                author: "J.K. Rowling",
+                publicationYear: 1997,
+                isBorrowed: true
+            }
+        ];
+
+        function displayBooks() {
+            library.forEach(book => {
+                console.log(`Titre: ${book.title}, Auteur: ${book.author}, Année: ${book.publicationYear}, Emprunté: ${book.isBorrowed ? 'Oui' : 'Non'}`);
+            });
+        }
+        displayBooks();
+
+        function searchBookByTitle(title) {
+            const book = library.find(book => book.title === title);
+            if (book) {
+                console.log(`Le livre a bien été trouvé ! Titre: ${book.title}, Auteur: ${book.author},
+                Année de publication: ${book.publicationYear}, Emprunté: ${book.isBorrowed ? 'Oui' : 'Non'}`);
+            } else {
+                console.log("Le livre n'est pas présent dans la librairie.");
+            }
+        }
+        searchBookByTitle('Le Petit Prince');
+
+        function toggleBorrowStatus(title) {
+            const bookIndex = library.findIndex(book => book.title === title);
+            if (bookIndex !== -1) {
+                library[bookIndex].isBorrowed = !library[bookIndex].isBorrowed;
+                console.log(`Le statut d'emprunt de '${library[bookIndex].title}' a été modifié.`);
+            } else {
+                console.log("Le livre n'est pas dans la bibliothèque.");
+            }
+        }
+        toggleBorrowStatus("Le Petit Prince");
+        displayBooks()
+
+
+    </script>
+</body>
+</html>
