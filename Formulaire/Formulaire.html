@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire</title>
+</head>
+<body>
+    <form id="contactForm" novalidate>
+        <div id="error" style="color:red"></div>
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+
+    <script>
+        document.getElementById('contactForm').onsubmit = function(validateForm) {
+            validateForm.preventDefault(); // Empêche le rechargement de la page
+
+            let email = document.getElementById('email').value;
+            let name = document.getElementById('name').value;
+            let message = document.getElementById('message').value;
+
+            if (!email.includes('@') || !email.includes('.')) {
+                document.getElementById('error').innerHTML = `L'adresse mail fournie n'est pas valide.`;
+            }
+            else if (name === '') {
+                document.getElementById('error').innerHTML = `Vous devez fournir votre nom pour envoyer ce formulaire.`;
+            }
+            else if (message === '') {
+                document.getElementById('error').innerHTML = `Vous devez écrire un message pour envoyer ce formulaire.`;
+            }
+            else {
+                // document.getElementById('error').innerHTML = ''; // Efface les messages d'erreur précédents
+
+
+                // Créé et ajoute <ul> à la fin du formulaire
+                let formDataList = document.createElement('ul');
+                document.getElementById('contactForm').appendChild(formDataList);
+
+                let li1 = document.createElement('li');
+                li1.textContent = `Nom: ${name}`;
+                formDataList.appendChild(li1);
+
+                let li2 = document.createElement('li');
+                li2.textContent = `Email: ${email}`;
+                formDataList.appendChild(li2);
+
+                let li3 = document.createElement('li');
+                li3.textContent = `Message: ${message}`;
+                formDataList.appendChild(li3);
+
+
+            }
+        };
+    </script>
+</body>
+</html>
