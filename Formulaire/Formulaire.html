@@ -37,12 +37,16 @@
             else if (name === '') {
                 document.getElementById('error').innerHTML = `Vous devez fournir votre nom pour envoyer ce formulaire.`;
             }
+            else if (!/^[A-Za-zÀ-ÖØ-öø-ÿ]+$/.test(name)) {
+                document.getElementById('error').innerHTML = `Le nom ne doit contenir que des lettres.`;
+            }
+
             else if (message === '') {
                 document.getElementById('error').innerHTML = `Vous devez écrire un message pour envoyer ce formulaire.`;
             }
             else {
-                // document.getElementById('error').innerHTML = ''; // Efface les messages d'erreur précédents
-
+                // Efface les messages d'erreur précédents
+                document.getElementById('error').innerHTML = '';
 
                 // Créé et ajoute <ul> à la fin du formulaire
                 let formDataList = document.createElement('ul');
@@ -60,6 +64,15 @@
                 li3.textContent = `Message: ${message}`;
                 formDataList.appendChild(li3);
 
+                /* OU
+
+                // Créer et ajouter les éléments <li> avec les données du formulaire
+                ['Nom: ' + name, 'Email: ' + email, 'Message: ' + message].forEach(data => {
+                    let li = document.createElement('li');
+                    li.textContent = data;
+                    formDataList.appendChild(li);
+
+                 */
 
             }
         };
